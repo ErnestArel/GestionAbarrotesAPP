@@ -86,6 +86,9 @@ class UsuarioController {
                     'nombre_completo' =>
                         $_POST['nombre_completo'],
 
+                    'email' =>
+                        $_POST['email'],
+
                     'rol' =>
                         $_POST['rol']
                 ];
@@ -168,6 +171,9 @@ class UsuarioController {
 
                     'nombre_completo' =>
                         $_POST['nombre_completo'],
+
+                    'email' =>
+                        $_POST['email'],
 
                     'rol' =>
                         $_POST['rol'],

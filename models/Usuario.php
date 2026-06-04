@@ -90,6 +90,7 @@ class Usuario {
                 id,
                 usuario,
                 nombre_completo,
+                email,
                 rol,
                 estado,
                 fecha_registro
@@ -118,6 +119,7 @@ class Usuario {
                 id,
                 usuario,
                 nombre_completo,
+                email,
                 rol,
                 estado
 
@@ -164,6 +166,7 @@ class Usuario {
                 usuario,
                 clave,
                 nombre_completo,
+                email,
                 rol
 
             )
@@ -173,6 +176,7 @@ class Usuario {
                 :usuario,
                 :clave,
                 :nombre,
+                :email,
                 :rol
 
             )
@@ -193,6 +197,9 @@ class Usuario {
 
                 ':nombre' =>
                     $datos['nombre_completo'],
+
+                ':email' =>
+                    $datos['email'],
 
                 ':rol' =>
                     $datos['rol']
@@ -231,6 +238,7 @@ class Usuario {
 
                     usuario = :usuario,
                     nombre_completo = :nombre,
+                    email = :email,
                     rol = :rol,
                     clave = :clave
 
@@ -249,6 +257,9 @@ class Usuario {
 
                     ':nombre' =>
                         $datos['nombre_completo'],
+
+                    ':email' =>
+                        $datos['email'],
 
                     ':rol' =>
                         $datos['rol'],
@@ -276,6 +287,7 @@ class Usuario {
 
                 usuario = :usuario,
                 nombre_completo = :nombre,
+                email = :email,
                 rol = :rol
 
             WHERE id = :id
@@ -293,6 +305,9 @@ class Usuario {
 
                 ':nombre' =>
                     $datos['nombre_completo'],
+
+                ':email' => 
+                    $datos['email'],
 
                 ':rol' =>
                     $datos['rol'],

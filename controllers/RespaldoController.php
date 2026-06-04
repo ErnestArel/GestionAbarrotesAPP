@@ -111,6 +111,10 @@ class RespaldoController {
             $rutaBackupDir =
                 __DIR__ . '/../backups/';
 
+            echo $rutaBackupDir;
+            exit();
+
+
             $rutaBackup =
                 $rutaBackupDir . $nombreArchivo;
 
