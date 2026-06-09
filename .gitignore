@@ -2,3 +2,5 @@
 /node_modules/
 /backups/*
 .env
+Test/.phpunit.result.cache
+Test/tools/phpunit.phar
