@@ -268,9 +268,7 @@ class Proveedor {
 
         $sql = "
 
-            UPDATE proveedores
-
-            SET estado = 0
+            DELETE FROM proveedores
 
             WHERE id = :id
 
