@@ -35,3 +35,7 @@ Incluidos como `SKIP` porque el modulo requerido no existe en el codigo actual:
 - Reactivacion de proveedor: CP-043, CP-044
 
 CP-037 queda como assert de requisito del Excel: espera eliminacion fisica de proveedor. El codigo actual hace baja logica (`UPDATE proveedores SET estado = 0`), por lo que esa prueba debe fallar hasta alinear requisito o implementacion.
+
+## Ejecucion en Actions
+
+Las pruebas se ejecutan automaticamente al hacer push a main 
