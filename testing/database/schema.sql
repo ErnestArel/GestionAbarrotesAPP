@@ -1,0 +1,68 @@
+CREATE DATABASE IF NOT EXISTS gestion_abarrotes_test
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE gestion_abarrotes_test;
+
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS auditoria;
+DROP TABLE IF EXISTS productos;
+DROP TABLE IF EXISTS proveedores;
+DROP TABLE IF EXISTS usuarios;
+SET FOREIGN_KEY_CHECKS = 1;
+
+CREATE TABLE usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario VARCHAR(100) NOT NULL UNIQUE,
+  clave VARCHAR(255) NOT NULL,
+  nombre_completo VARCHAR(150) NOT NULL,
+  email VARCHAR(150) NULL,
+  rol VARCHAR(30) NOT NULL DEFAULT 'admin',
+  estado TINYINT(1) NOT NULL DEFAULT 1,
+  fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE proveedores (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  ruc VARCHAR(11) NOT NULL UNIQUE,
+  razon_social VARCHAR(150) NOT NULL,
+  contacto VARCHAR(150) NOT NULL,
+  telefono VARCHAR(20) NOT NULL,
+  email VARCHAR(150) NOT NULL,
+  direccion TEXT NOT NULL,
+  estado TINYINT(1) NOT NULL DEFAULT 1,
+  fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE productos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  codigo VARCHAR(50) NOT NULL UNIQUE,
+  nombre VARCHAR(150) NOT NULL,
+  categoria VARCHAR(100) NOT NULL,
+  precio_compra DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+  precio_venta DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+  stock INT NOT NULL DEFAULT 0,
+  stock_minimo INT NOT NULL DEFAULT 0,
+  proveedor_id INT NULL,
+  fecha_vencimiento DATE NULL,
+  estado TINYINT(1) NOT NULL DEFAULT 1,
+  fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_productos_proveedores
+    FOREIGN KEY (proveedor_id) REFERENCES proveedores(id)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE auditoria (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NULL,
+  accion VARCHAR(50) NOT NULL,
+  modulo VARCHAR(100) NOT NULL,
+  descripcion TEXT NOT NULL,
+  ip VARCHAR(45) NULL,
+  fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_auditoria_usuarios
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
