@@ -1,7 +1,6 @@
 /vendor/
 /node_modules/
 /backups/*
-/testing/reports/
 .env
 Test/.phpunit.result.cache
 Test/tools/phpunit.phar
