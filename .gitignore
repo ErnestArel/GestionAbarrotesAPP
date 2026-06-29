@@ -2,7 +2,6 @@
 /node_modules/
 /backups/*
 /testing/reports/
-/testing/.runtime/
 .env
 Test/.phpunit.result.cache
 Test/tools/phpunit.phar
